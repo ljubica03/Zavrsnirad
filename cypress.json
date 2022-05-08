@@ -1,3 +1,15 @@
 {
-    "baseUrl": "https://www.phptravels.net/" 
+    "baseUrl": "https://www.phptravels.net/",
+
+    "env": {
+        
+        "Customer": {
+          "username": "user@phptravels.com",
+          "password": "demouser"
+        },
+        "Agent": {
+          "username": "agent@phptravels.com",
+          "password": "demoagent"
+        }
+      }
 }
