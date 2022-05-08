@@ -1,10 +1,14 @@
+
+const customer = Cypress.env("Customer");
+import { CustomerPage } from '../fixtures/constants'
+
 describe('Custommer Page Suite', function() {
      
     beforeEach('Go to apllication and click on coocke', function(){
        cy.visit('/');
        cy.get('#cookie_stop').click();
        cy.get('.theme-btn-transparent').click({force: true});
-       cy.login('user@phptravels.com','demouser');  
+       cy.login(customer.username, customer.password);   
        });
 
     it('Checking author content', function(){
@@ -23,17 +27,17 @@ describe('Custommer Page Suite', function() {
         cy.get('.form-title-wrap > .title').should('have.text', 'Profile Information'); 
       });
 
-    it('Checking author content', function(){
+    it('Checking Customer name', function(){
         //cy.get('.breadcrumb-content > .section-heading > .sec__title').contains('Demo');
        cy.get('.breadcrumb-content > .section-heading > .sec__title').should('have.text', 'Hi, Demo Welcome Back');
       });
     
     it('Checing visibility of elements on right side of page', function(){
-       cy.get('.user_wallet > .icon-box > .d-flex > .info-content > .info__desc').should('have.text', 'Wallet Balance');
-       cy.get(':nth-child(2) > .icon-box > .d-flex > .info-content > .info__desc').should('have.text', 'Total Bookings');
-       cy.get(':nth-child(3) > .icon-box > .d-flex > .info-content > .info__desc').should('have.text', 'Pending Invoices');
-       cy.get(':nth-child(4) > .icon-box > .d-flex > .info-content > .info__desc').should('have.text', 'Reviews');
-       cy.get('.title').should('have.text', 'Recent Searches');    
+       cy.get('.user_wallet > .icon-box > .d-flex > .info-content > .info__desc').should('have.text', CustomerPage.infoboxWallet);
+       cy.get(':nth-child(2) > .icon-box > .d-flex > .info-content > .info__desc').should('have.text', CustomerPage.infoboxBookings);
+       cy.get(':nth-child(3) > .icon-box > .d-flex > .info-content > .info__desc').should('have.text', CustomerPage.infoboxInvoices);
+       cy.get(':nth-child(4) > .icon-box > .d-flex > .info-content > .info__desc').should('have.text', CustomerPage.infoboxReviews);
+       cy.get('.title').should('have.text', CustomerPage.infoboxSearshes);    
       });
 
       
