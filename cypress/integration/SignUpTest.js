@@ -1,3 +1,6 @@
+
+import{SignUpForm} from'../support/pom_objects/SignUpPagePom'
+
 describe('Sign up Test suite', function() {
 
       
@@ -7,33 +10,33 @@ describe('Sign up Test suite', function() {
     });
 
     it('Navigate to SingUp page', function(){
-        cy.get('[href="https://www.phptravels.net/signup"]').click();
-        cy.get('.modal-title').should('have.text', 'Signup');  
+        cy.get(SignUpForm.btnTopSignup).click();
+        cy.get(SignUpForm.title).should('have.text', 'Signup');  
     });
 
     it('Create account, Insert valid data in all fields', function(){
-        cy.get('[href="https://www.phptravels.net/signup"]').click();
+        cy.get(SignUpForm.btnTopSignup).click();
        // cy.get('[placeholder="First Name"]').focus().click().type("First");
-        cy.get('[placeholder="First Name"]').click({force: true}).type("Second");
-        cy.get('[placeholder="Last Name"]').click({force: true}).type("Last");
-        cy.get('[placeholder="Phone"]').click({force: true}).type("381639");
-        cy.get('[placeholder="Email"]').click({force: true}).type("Second@bg.com");
-        cy.get('[placeholder="Password"]').click({force: true}).type("Test.321");
-        cy.get('#select2-account_type-container').click({force: true});
-        cy.get('.mt-3 > .btn').click({force: true}); 
-        cy.get('.alert').contains('Signup successfull please login.');
+        cy.get(SignUpForm.firstName).click({force: true}).type("Second");
+        cy.get(SignUpForm.lastName).click({force: true}).type("Last");
+        cy.get(SignUpForm.phone).click({force: true}).type("381639");
+        cy.get(SignUpForm.email).click({force: true}).type("Second@bg.com");
+        cy.get(SignUpForm.password).click({force: true}).type("Test.321");
+        cy.get(SignUpForm.typeAcc).click({force: true});
+        cy.get(SignUpForm.btnSubmitSignup).click({force: true}); 
+        cy.get(SignUpForm.alert).contains('Signup successfull please login.');
      });
 
      it('Create account with same email address', function(){
-        cy.get('[href="https://www.phptravels.net/signup"]').click();
-        cy.get('[placeholder="First Name"]').click({force: true}).type("Second");
-        cy.get('[placeholder="Last Name"]').click({force: true}).type("Last");
-        cy.get('[placeholder="Phone"]').click({force: true}).type("381639");
-        cy.get('[placeholder="Email"]').click({force: true}).type("Second@bg.com");
-        cy.get('[placeholder="Password"]').click({force: true}).type("Test.321");
-        cy.get('#select2-account_type-container').click({force: true});
-        cy.get('.mt-3 > .btn').click({force: true}); 
-        cy.get('.alert').contains('Email already exist!');
+        cy.get(SignUpForm.btnTopSignup).click();
+        cy.get(SignUpForm.firstName).click({force: true}).type("Second");
+        cy.get(SignUpForm.lastName).click({force: true}).type("Last");
+        cy.get(SignUpForm.phone).click({force: true}).type("381639");
+        cy.get(SignUpForm.email).click({force: true}).type("Second@bg.com");
+        cy.get(SignUpForm.password).click({force: true}).type("Test.321");
+        cy.get(SignUpForm.typeAcc).click({force: true});
+        cy.get(SignUpForm.btnSubmitSignup).click({force: true}); 
+        cy.get(SignUpForm.alert).contains('Email already exist!');
      });
      
 
