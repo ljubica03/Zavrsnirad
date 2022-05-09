@@ -1,9 +1,12 @@
 
 const customer = Cypress.env("Customer")
 const agent = Cypress.env("Agent")
-import { loginPage } from '../fixtures/constants'
-import {logInForm} from '../support/pom_objects/logInPage'
+import {loginPage} from '../fixtures/constants'
+import {valueCustomor} from '../fixtures/constCustomerPage'
+
+import {logInForm} from '../support/pom_objects/logInPagePom'
 import {leftNav} from '../support/pom_objects/CustomerPagePom'
+import {selectCustomor} from '../support/pom_objects/CustomerPagePom'
 
 describe('Login Test suite', function() {
      
@@ -20,13 +23,14 @@ describe('Login Test suite', function() {
     it('Login succesfully', function(){
        cy.get(logInForm.btnLogin).click({force: true});
        cy.login(customer.username, customer.password);  
-       cy.get('.author__title > strong').contains(loginPage.customerName);
+       cy.get(selectCustomor.Name).contains(valueCustomor.Name);
     });
 
     it('Logout', function(){
       cy.get(logInForm.btnLogin).click({force: true});
       cy.login(agent.username, agent.password);  
       cy.get(leftNav.logout).click({force: true});
+      cy.get(logInForm.sLogInTitle).should('have.text', loginPage.title);
       });
 
 

@@ -10,7 +10,7 @@ const rightTitle = {
     infoboxAddFund: 'Add Funds',
     infoboxMyProfil:'Profile Information',
 }
-   const boxTitle = {
+const boxTitle = {
     Wallet: 'Wallet Balance',
     Bookings: 'Total Bookings',
     Invoices: 'Pending Invoices',
